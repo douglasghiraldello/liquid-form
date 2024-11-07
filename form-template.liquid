@@ -1,0 +1,26 @@
+{% comment %} Mocking user informatio {% endcomment %}
+{% assign user_detail = user.detail %}
+{% assign user_policy = user.policy %}
+{% assign user_summary = user.summary %}
+
+
+{% comment %} Creating the form {% endcomment %}
+{% form 'template-form', id: 'user-information' %}
+    {% if form.posted_successfully? %}
+        <label for="user-detail">
+            <input type="textarea" name="user-detail" value="" placeholder="User detail">
+        </label>
+        <label for="user-policy">
+            <input type="text" name="user-policy" value="" placeholder="User policy">
+        </label>
+        <label for="user-summary">
+            <input type="texta" name="user-summary" value="" placeholder="User summary">
+        </label>
+    
+        <button class="btn" type="submit">submit</button>
+    {% else %}
+        {% comment %} Messsage error {% endcomment %} 
+        <span class="hasError hidden">There is an error</span>
+        <span class="hasCubmitted hidden">Submited</span>
+    {% endif %}
+{% endform %}
